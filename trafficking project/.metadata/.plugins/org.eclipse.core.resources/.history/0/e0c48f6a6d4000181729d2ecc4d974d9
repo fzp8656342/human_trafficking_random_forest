@@ -1,0 +1,71 @@
+package com.example.Reel_Gym;
+
+import com.example.Reel_Gym.R;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class Activity02 extends Activity {
+
+	private Button btn_Goback;
+	private Button btn_02; // ok
+	private EditText data1;
+	String res;	   			//template save input data
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity02);
+
+		btn_Goback = (Button) findViewById(R.id.button1);
+		btn_02 = (Button) findViewById(R.id.button2);
+		data1 = (EditText) findViewById(R.id.editText1);
+		
+		btn_Goback.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+					Intent intentbutton = new Intent();
+					intentbutton.setClass(Activity02.this, MainActivity.class);
+					startActivity(intentbutton);
+					finish();
+				}
+		});
+		
+
+		btn_02.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+/*
+             try{
+                   res=data1.getText().toString();
+             }catch (Exception e){
+                 e.printStackTrace();
+             }*/
+//             Toast.makeText(getApplicationContext(), res, Toast.LENGTH_SHORT).show();
+				
+					Intent intentbutton = new Intent();
+					if(((Main_Value)getApplicationContext()).getvisible()==1){
+						((Main_Value)getApplication()).setvisible(0);
+						btn_02.setVisibility(View.INVISIBLE);
+					}
+					intentbutton.setData(Uri.parse("http://www.google.com"));
+					intentbutton.setAction(intentbutton.ACTION_VIEW);
+//					intentbutton.setClass(Activity02.this, Workout.class);
+					startActivity(intentbutton);
+//					finish();
+				}
+		});
+
+	}
+
+}

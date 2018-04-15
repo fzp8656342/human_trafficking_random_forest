@@ -1,0 +1,14 @@
+package com.example.Reel_Gym;
+
+public class Main_Value {
+
+	private float Result;
+	
+	public float GetResult(){
+		return Result;
+	}
+	
+	public void WriteResult(float ResultIn){
+		Result=ResultIn;
+	}
+}

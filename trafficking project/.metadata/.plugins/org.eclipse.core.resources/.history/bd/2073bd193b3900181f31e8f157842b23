@@ -1,0 +1,62 @@
+package com.example.Reel_Gym;
+
+import com.example.Reel_Gym.R;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class Start_page extends Activity {
+
+	private Button btn_Goback;
+	private Button btn_02; // next page
+	private EditText data1;
+	private EditText data2;
+	private EditText data3;
+	private EditText data4;
+	private EditText data5;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.startpage);
+
+		btn_Goback = (Button) findViewById(R.id.button1);
+		btn_02 = (Button) findViewById(R.id.button2);
+		data1 = (EditText) findViewById(R.id.editText1);
+		data2 = (EditText) findViewById(R.id.editText2);
+		data3 = (EditText) findViewById(R.id.editText3);
+		data4 = (EditText) findViewById(R.id.editText4);
+		data5 = (EditText) findViewById(R.id.editText5);
+		
+		btn_Goback.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {  
+					Intent intentbutton = new Intent();
+					intentbutton.setClass(Start_page.this, Activity02.class);
+					startActivity(intentbutton);
+					finish();
+				}
+		});
+		
+		btn_02.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+					Intent intentbutton = new Intent();
+					intentbutton.setClass(Start_page.this, Main_Model.class);
+//					intentbutton.setClass(Activity02.this, Workout.class);
+					startActivity(intentbutton);
+//					finish();
+				}
+		});
+		
+		
+
+	}
+
+}

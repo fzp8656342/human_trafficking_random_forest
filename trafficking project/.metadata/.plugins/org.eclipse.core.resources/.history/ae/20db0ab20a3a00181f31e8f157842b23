@@ -1,0 +1,164 @@
+package com.example.Reel_Gym;
+
+import com.example.Reel_Gym.R;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class Main_Model extends Activity {
+
+	private Button btn_Goback;
+	private Button btn_Start;
+	private TextView Result_Text1;
+	
+	private float Result=0;		//model data 
+	private float[] model_array={1,2,3,4,5};
+	
+	private float data1;				
+	private float data2;
+	private float data3;
+	private float data4;
+	private float data5;
+	private String data6;
+	private int data7;
+	private float[] data8 = new float[5];
+	private float[][] data9 = new float[2][3];
+
+/**************read data*************************/
+	public float Get_data1(){
+		return data1;
+	}
+	
+	public float Get_data2(){
+		return data2;
+	}
+	
+	public float Get_data3(){
+		return data3;
+	}
+	
+	public float Get_data4(){
+		return data4;
+	}
+	
+	public float Get_data5(){
+		return data5;
+	}
+		
+	public String Get_data6(){
+		return data6;
+	}
+	
+	public int Get_data7(){
+		return data7;
+	}
+	
+	public float[] Get_data8(){
+		return data8;
+	}
+	
+	public float[][] Get_data9(){
+		return data9;
+	}
+	
+/**************Write data*************************/
+	public void Write_data1(float data1){
+		this.data1=data1;
+		this.data8[0]=data1;
+	}
+	
+	public void Write_data2(float data2){
+		this.data2=data2;
+		this.data8[1]=data2;
+	}
+	
+	public void Write_data3(float data3){
+		this.data3=data3;
+		this.data8[2]=data3;
+	}
+	
+	public void Write_data4(float data4){
+		this.data4=data4;
+		this.data8[3]=data4;
+	}
+	
+	public void Write_data5(float data5){
+		this.data5=data5;
+		this.data8[4]=data5;
+	}
+	
+	public void Write_data6(String data6){
+		this.data6=data6;
+	}
+	
+	public void Write_data7(int data7){
+		this.data7=data7;
+	}
+	
+	public void Write_data8(float[] data8){
+		this.data8=data8;
+	}
+	
+	public void Write_data9(float[][] data9){
+		this.data9=data9;
+	}
+
+/**************model *************************/
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.mainmodel);
+		
+		btn_Goback = (Button) findViewById(R.id.button2);
+		btn_Start = (Button) findViewById(R.id.button1);
+		Result_Text1 = (TextView) findViewById(R.id.textView2);
+		
+		btn_Goback.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent intentbutton = new Intent();
+				intentbutton.setClass(Main_Model.this, Start_page.class);
+				startActivity(intentbutton);
+				finish();
+			}
+		});		
+		
+		btn_Start.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Toast.makeText(getBaseContext(), "Calculating Model", Toast.LENGTH_SHORT).show();
+				
+				Bundle bundle = getIntent().getExtras();		//data transfer
+				float data_1 = bundle.getFloat("data01");
+				float data_2 = bundle.getFloat("data02");
+				float data_3 = bundle.getFloat("data03");
+				float data_4 = bundle.getFloat("data04");
+				float data_5 = bundle.getFloat("data05");
+				
+				Main_Model Model1= new Main_Model();
+				Model1.Write_data1(data_1);
+				Model1.Write_data2(data_2);
+				Model1.Write_data3(data_3);
+				Model1.Write_data4(data_4);
+				Model1.Write_data5(data_5);
+				
+				for(int i=0; i<5; i++){
+					Model1.Result = Model1.model_array[i]*Model1.data8[i] + Model1.Result;
+				}
+				Result_Text1.setText(" "+String.valueOf(Model1.Result));
+				Result_Text1.setTextColor(23);
+				
+			}
+		});		
+		
+		
+	}
+}
+

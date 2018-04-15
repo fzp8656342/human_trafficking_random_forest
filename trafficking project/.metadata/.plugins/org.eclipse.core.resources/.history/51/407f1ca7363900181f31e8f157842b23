@@ -1,0 +1,138 @@
+package com.example.Reel_Gym;
+
+import com.example.Reel_Gym.R;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class Main_Model extends Activity {
+
+	private Button btn_Goback;
+	private Button btn_Start;
+	
+	private float Result=0;		//model data 
+	private float[] model_array={1,2,3,4,5};
+	
+	private float data1;				
+	private float data2;
+	private float data3;
+	private float data4;
+	private float data5;
+	private String data6;
+	private float data7;
+	private float[] data8 = new float[5];
+	private float[][] data9 = new float[2][3];
+
+/**************read data*************************/
+	public int Get_data1(){
+		return data1;
+	}
+	
+	public int Get_data2(){
+		return data2;
+	}
+	
+	public int Get_data3(){
+		return data3;
+	}
+	
+	public int Get_data4(){
+		return data4;
+	}
+	
+	public int Get_data5(){
+		return data5;
+	}
+		
+	public String Get_data6(){
+		return data6;
+	}
+	
+	public float Get_data7(){
+		return data7;
+	}
+	
+	public float[] Get_data8(){
+		return data8;
+	}
+	
+	public float[][] Get_data9(){
+		return data9;
+	}
+	
+/**************Write data*************************/
+	public void Write_data1(int data1){
+		this.data1=data1;
+	}
+	
+	public void Write_data2(int data2){
+		this.data2=data2;
+	}
+	
+	public void Write_data3(int data3){
+		this.data3=data3;
+	}
+	
+	public void Write_data4(int data4){
+		this.data4=data4;
+	}
+	
+	public void Write_data5(int data5){
+		this.data5=data5;
+	}
+	
+	public void Write_data6(String data6){
+		this.data6=data6;
+	}
+	
+	public void Write_data7(float data7){
+		this.data7=data7;
+	}
+	
+	public void Write_data8(float[] data8){
+		this.data8=data8;
+	}
+	
+	public void Write_data9(float[][] data9){
+		this.data9=data9;
+	}
+
+/**************model *************************/
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.mainmodel);
+		
+		btn_Goback = (Button) findViewById(R.id.button2);
+		btn_Goback.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent intentbutton = new Intent();
+				intentbutton.setClass(Main_Model.this, Start_page.class);
+				startActivity(intentbutton);
+				finish();
+			}
+		});		
+		
+		btn_Start = (Button) findViewById(R.id.button1);
+		btn_Start.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Toast.makeText(getBaseContext(), "Calculating Model", Toast.LENGTH_SHORT).show();
+				for(int i=0; i<5; i++){
+					Result = model_array[i]*data8[i] + Result;
+				}
+				
+			}
+		});		
+		
+		
+	}
+}
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Fight Human Trafficking</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Fight Trafficking</string>
+    <string name="button1">My Account</string>
+	<string name="button2">Start</string>
+	<string name="button3">News </string>
+	<string name="button4">Setting </string>
+	<string name="button6">Exit</string>
+	<string name="Back">Back Home</string>
+	<string name="text2">This app has almost everything we have talked about</string>
+    <string name="none_paired">No devices have been paired</string>
+	
+</resources>

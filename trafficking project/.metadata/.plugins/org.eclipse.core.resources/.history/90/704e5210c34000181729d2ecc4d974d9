@@ -1,0 +1,147 @@
+package com.example.Reel_Gym;
+
+import com.example.Reel_Gym.R;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class Activity02 extends Activity {
+
+	private Button btn_Goback;
+	private Button btn_02; // ok
+	private Button button_01;
+	private Button button_02;
+	private EditText data1;
+	String res;	   			//template save input data
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity02);
+        ((Main_Value)getApplication()).setvisible(1);
+
+		btn_Goback = (Button) findViewById(R.id.button1);
+		btn_02 = (Button) findViewById(R.id.button2);
+		button_01 = (Button) findViewById(R.id.Button01);
+		button_02 = (Button) findViewById(R.id.Button02);
+		data1 = (EditText) findViewById(R.id.editText1);
+		
+		if(((Main_Value)getApplicationContext()).getvisible()==1){
+//			((Main_Value)getApplication()).setvisible(0);
+			btn_02.setVisibility(View.VISIBLE);
+			button_01.setVisibility(View.INVISIBLE);
+			button_02.setVisibility(View.INVISIBLE);
+		}
+		if(((Main_Value)getApplicationContext()).getvisible()==0){
+//			((Main_Value)getApplication()).setvisible(0);
+			btn_02.setVisibility(View.INVISIBLE);
+			button_01.setVisibility(View.VISIBLE);
+			button_02.setVisibility(View.VISIBLE);
+		}
+		
+		btn_Goback.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+					Intent intentbutton = new Intent();
+					intentbutton.setClass(Activity02.this, MainActivity.class);
+					startActivity(intentbutton);
+					finish();
+				}
+		});
+		
+
+		btn_02.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+/*
+             try{
+                   res=data1.getText().toString();
+             }catch (Exception e){
+                 e.printStackTrace();
+             }*/
+//             Toast.makeText(getApplicationContext(), res, Toast.LENGTH_SHORT).show();
+				
+					Intent intentbutton = new Intent();
+					intentbutton.setData(Uri.parse("https://www.dropbox.com/s/4c7nzjotjyh74em/00b0c1a8bf3cea6d0f951a560d4cda2d56cf30bf3bc1d0c5120893d079c2810a.html?dl=0"));
+					intentbutton.setAction(intentbutton.ACTION_VIEW);
+//					intentbutton.setClass(Activity02.this, Workout.class);
+					startActivity(intentbutton);
+/*					new Thread(){
+						public void run(){
+							try {
+								sleep(2000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					}.start();*/
+
+					if(((Main_Value)getApplicationContext()).getvisible()==1){
+						((Main_Value)getApplication()).setvisible(0);
+						btn_02.setVisibility(View.INVISIBLE);
+						button_01.setVisibility(View.VISIBLE);
+						button_02.setVisibility(View.VISIBLE);
+					}
+					else if(((Main_Value)getApplicationContext()).getvisible()==0){
+						((Main_Value)getApplication()).setvisible(1);
+						btn_02.setVisibility(View.VISIBLE);
+						button_01.setVisibility(View.INVISIBLE);
+						button_02.setVisibility(View.INVISIBLE);
+					} 
+//					finish();
+				}
+		});
+		
+		button_01.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+			     Toast.makeText(getApplicationContext(), "Data recorded", Toast.LENGTH_SHORT).show();
+				if(((Main_Value)getApplicationContext()).getvisible()==1){
+					((Main_Value)getApplication()).setvisible(0);
+					btn_02.setVisibility(View.INVISIBLE);
+					button_01.setVisibility(View.VISIBLE);
+					button_02.setVisibility(View.VISIBLE);
+				}
+				else if(((Main_Value)getApplicationContext()).getvisible()==0){
+					((Main_Value)getApplication()).setvisible(1);
+					btn_02.setVisibility(View.VISIBLE);
+					button_01.setVisibility(View.INVISIBLE);
+					button_02.setVisibility(View.INVISIBLE);
+				} 
+				}
+		});
+		
+		button_02.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Toast.makeText(getApplicationContext(), "Data recorded", Toast.LENGTH_SHORT).show();
+				if(((Main_Value)getApplicationContext()).getvisible()==1){
+					((Main_Value)getApplication()).setvisible(0);
+					btn_02.setVisibility(View.INVISIBLE);
+					button_01.setVisibility(View.VISIBLE);
+					button_02.setVisibility(View.VISIBLE);
+				}
+				else if(((Main_Value)getApplicationContext()).getvisible()==0){
+					((Main_Value)getApplication()).setvisible(1);
+					btn_02.setVisibility(View.VISIBLE);
+					button_01.setVisibility(View.INVISIBLE);
+					button_02.setVisibility(View.INVISIBLE);
+				} 
+				}
+		});
+
+	}
+
+}
